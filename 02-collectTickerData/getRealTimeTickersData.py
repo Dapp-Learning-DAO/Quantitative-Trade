@@ -16,7 +16,7 @@ futures_list = ['BTC-USD-220325','BTC-USDT-220325']
 
 # 获取结束时间
 start_time = pd.to_datetime(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-end_time = pd.to_datetime(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) + datetime.timedelta(seconds=timedelta)
+end_time = start_time + datetime.timedelta(seconds=timedelta)
 
 exchange = ccxt.okex5()
 
@@ -25,7 +25,7 @@ swap_coin_based_data = []
 swap_u_based_data = []
 future_coin_based_data = []
 future_u_based_data = []
-# 获取永续合约, 交易合约数据
+# 获取永续合约, 交割合约数据
 while True:
     # 循环遍历 swap_list, 获取永续合约数据
     for swap in swap_list:
@@ -38,10 +38,10 @@ while True:
         else:
             swap_coin_based_data.append(temp_swap_data)
 
-    # 循环遍历 swap_list, 获取永续合约数据
+    # 循环遍历 futures_list, 获取交割合约数据
     for future in futures_list:
         params = {
-            'instId': future,  ## 永续合约
+            'instId': future,  ## 交割合约
         }
         temp_future_data = pd.DataFrame(exchange.publicGetMarketTicker(params)['data'])
         if future.startswith('BTC-USDT'):

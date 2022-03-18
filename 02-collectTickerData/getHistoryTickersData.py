@@ -14,8 +14,8 @@ path = os.getcwd()
 # 数据类型为 spot , 现货
 trade_type = 'spot'
 # 往前推进的时间周期，单位为天
-timedelta = 30
-# 获取一年前的时间 
+timedelta = 1
+# 获取 start_time 开始时间
 start_time = str(pd.to_datetime(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())) - datetime.timedelta(days=timedelta))
 
 # 需要获取的交易对
@@ -36,4 +36,5 @@ for symbol in symbol_list:
             error_list.append('_'.join([exchange.id, symbol, time_interval]))
 
 # 打印错误信息
-print(error_list)
+if len(error_list) > 0:
+    print(error_list)

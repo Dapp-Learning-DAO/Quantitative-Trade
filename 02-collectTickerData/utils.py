@@ -3,7 +3,6 @@ import os
 import datetime
 import pandas as pd
 import time
-pd.set_option('expand_frame_repr', False) 
 
 """
 检查文件夹
@@ -47,7 +46,7 @@ def check_folder(exchange, symbol, time_interval, start_time, path, trade_type):
 def feth_and_sort_data(exchange,symbol,time_interval,start_time,timedelta):
     df_list = []
     start_time_since = exchange.parse8601(start_time)
-    end_time = pd.to_datetime(start_time) + datetime.timedelta(days=timedelta) #默认获取 1 天的交易数据
+    end_time = pd.to_datetime(start_time) + datetime.timedelta(days=timedelta)
     
     while True:
         # 获取数据

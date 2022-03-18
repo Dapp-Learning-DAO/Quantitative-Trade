@@ -25,6 +25,7 @@ exchange = ccxt.okex5(OKEX_CONFIG)
 
 # ===========获取产品行情信息
 ticker = exchange.fetch_ticker(symbol='CRV-USDT')
+
 print(ticker)
 # print(json.dumps(ticker,sort_keys=True, indent=4, separators=(',', ': ')))
 """
