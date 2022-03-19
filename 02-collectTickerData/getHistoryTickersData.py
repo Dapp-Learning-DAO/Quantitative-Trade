@@ -5,7 +5,7 @@ import time
 import os
 import datetime
 import utils
-pd.set_option('display.max_max_columss', None)  #  print 时，显示所有列数据
+pd.set_option('display.max_columns', None)  #  print 时，显示所有列数据
 pd.set_option('display.max_rows', None)  #  print 时，显示所有行数据
 
 exchange = ccxt.binance()
